@@ -1,51 +1,39 @@
-#include "../mlx/mlx.h"
+#include <mlx.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
 
-typedef struct s_data
-{
-	void *mlx_ptr;
-	void *win_ptr;
-} t_data;
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
-int on_destroy(t_data *data)
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	exit(0);
-	return (0);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
-int on_keypress(int keysym, t_data *data)
+int	main(void)
 {
-	(void)data;
-	printf("Pressed key: %d\\n", keysym); // not showing when u type cause this is printf
-	write(1,"pressed",7);
-	return (0);
-}
+	void	*mlx;
+	void	*mlx_win;
+	t_data	img;
 
-int main(void)
-{
-	t_data data;
-
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
-		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hello world");
-	if (!data.win_ptr)
-		return (free(data.mlx_ptr), 1);
-
-	// Register key release hook
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-
-	// Register destroy hook
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-
-	// Loop over the MLX pointer
-	mlx_loop(data.mlx_ptr);
-	return (0);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1080, 720, "Hello world!");
+	img.img = mlx_new_image(mlx, 1080, 720);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	my_mlx_pixel_put(&img, 50, 50, 0x00FFFFFF);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	// mlx_put_image_to_window(mlx, mlx_win, img.img, 1, 0);
+	// mlx_put_image_to_window(mlx, mlx_win, img.img, 2, 0);
+	// mlx_put_image_to_window(mlx, mlx_win, img.img, 3, 0);
+	// mlx_put_image_to_window(mlx, mlx_win, img.img, 4, 0);
+	mlx_loop(mlx);
 }

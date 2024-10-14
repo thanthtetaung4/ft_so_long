@@ -1,8 +1,10 @@
 # Paths and Files
 MLX_PATH = ./mlx
 MLX_LIB = $(MLX_PATH)/libmlx.a
-MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11
-CFLAGS = -Wall -Wextra -Werror
+MLX_FLAGS = -L$(MLX_PATH) -Lmlx -lmlx -lXext -lX11
+# CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
+#remeber to put cflags back
 
 # Source and object files
 SRCS = src/main.c  # Add other source files as needed
