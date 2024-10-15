@@ -19,7 +19,6 @@ typedef struct t_map
 #define BBC "textures/big_bad_cat.xpm"
 
 //map
-char **init_map(const char *path);
-
+s_map *init_map(const char *path);
 
 #endif
