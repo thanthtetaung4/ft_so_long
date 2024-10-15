@@ -8,6 +8,8 @@ int	main(void)
 	int		img_width;
 	int		img_height;
 
+	int		p_x = 0,p_y = 0;
+
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 500, 500, "so_long");
 	printf("img_width: %i, img_height: %i\n",img_width, img_height);
@@ -18,7 +20,15 @@ int	main(void)
 	else
 		printf("IMG OK\n");
 	printf("img_width: %i, img_height: %i\n",img_width, img_height);
-	mlx_put_image_to_window(mlx, mlx_win, mlx_img, img_width, img_height);
+	while(p_x < 500)
+	{
+		mlx_clear_window(mlx,mlx_win);
+		mlx_put_image_to_window(mlx, mlx_win, mlx_img, p_x, p_y);
+		p_x += 50;
+		p_y+= 10;
+		printf("moving\n");
+		usleep(50000);
+	}
 	mlx_loop(mlx);
 }
 // #include "../so_long.h"
