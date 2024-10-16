@@ -5,6 +5,7 @@
 #include <mlx.h>
 #include "./libft/libft.h"
 #include "./src/get_next_line/get_next_line.h"
+#include "./ft_printf/ft_printf.h"
 
 typedef struct t_map
 {
