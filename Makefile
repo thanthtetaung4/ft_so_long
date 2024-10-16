@@ -45,9 +45,9 @@ $(PRINTF_LIB):
 # Clean object files
 clean:
 	rm -f $(OBJS)
-	@$(MAKE) -C $(MLX_PATH) clean
 	@$(MAKE) -C $(LIBFT_PATH) clean
 	@$(MAKE) -C $(PRINTF_PATH) clean
+	@$(MAKE) -C $(MLX_PATH) clean
 
 # Clean object files and executable
 fclean: clean
