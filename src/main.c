@@ -27,7 +27,7 @@ int	main(void)
 		p_x += 50;
 		p_y+= 10;
 		ft_printf("moving\n");
-		usleep(50000);
+		usleep(40000);
 	}
 	mlx_loop(mlx);
 }
