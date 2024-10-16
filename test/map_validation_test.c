@@ -74,11 +74,11 @@ int main() {
     // Dynamic map allocation (modifiable)
     char *map[] = {
         strdup("1111111111111111111111111111111111"),
-        strdup("1E10000000000000C00000C00000000001"),
-        strdup("1110010100100000101001000000010101"),
+        strdup("1E00000000000000C00000C00000000001"),
+        strdup("1010010100100000101001001110010101"),
         strdup("1P0000000C00C000000000001C10000001"),
         strdup("1111111111111111111111111111111111")
-    };
+    };//This is not a valid map the program needs to be improved
 
     Position player = {3, 1};  // Starting position of the player (P)
 
