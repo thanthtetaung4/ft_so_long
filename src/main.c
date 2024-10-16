@@ -25,7 +25,7 @@ int	main(void)
 		mlx_clear_window(mlx,mlx_win);
 		mlx_put_image_to_window(mlx, mlx_win, mlx_img, p_x, p_y);
 		p_x += 50;
-		p_y+= 10;
+		p_y += 10;
 		ft_printf("moving\n");
 		usleep(40000);
 	}
