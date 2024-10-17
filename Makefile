@@ -12,8 +12,9 @@ CFLAGS =
 # Source and object files
 MAP_PATH = ./src/map
 WIN_CTRL_PATH = ./src/win_ctrl
+UTILS_PATH = ./src/utils
 SRCS = src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
-		$(MAP_PATH)/initialise.c $(WIN_CTRL_PATH)/win_ctrl.c # Add other source files as needed
+		$(UTILS_PATH)/print_utils.c $(MAP_PATH)/initialise.c $(MAP_PATH)/parse_utils.c $(MAP_PATH)/map_validations.c $(MAP_PATH)/validation_utils.c $(WIN_CTRL_PATH)/win_ctrl.c # Add other source files as needed
 OBJS = $(SRCS:.c=.o)
 
 # Compiler

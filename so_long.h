@@ -2,6 +2,7 @@
 #define SO_LONG_H
 
 #include <stdio.h>
+#include <fcntl.h>
 #include <mlx.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
@@ -53,6 +54,11 @@ typedef struct {
 //map
 s_map *init_map(const char *path);
 
+//map parse utils
+int	count_row(const char *path);
+s_map	*alloc_map(s_map *map, int rows);
+void	ft_map_row_cp(char **dest, char *src);
+
 //map validation utils
 char **copy_map(s_map *map_data);
 void free_map_copy(char **map_copy, int rows);
@@ -65,7 +71,11 @@ int check_valid_path(s_map *map_data, Position player_start);
 int is_rectangular(s_map *map_data);
 int is_surrounded_by_walls(s_map *map_data);
 int check_map_components(s_map *map_data, Position *player_start);
+int	entity_check(s_map *map_data);
 int validate_map(s_map *map_data);
+
+// print utils
+void	ft_print_map(s_map *map_data);
 
 //event handlers
 int	close_win(s_mlx *mlx_data);

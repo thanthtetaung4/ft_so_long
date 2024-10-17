@@ -3,56 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   initialise.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/15 14:04:39 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/18 02:01:40 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#include <fcntl.h>
 
-int	count_row(const char *path)
-{
-	int		fd;
-	char	*res;
-	int		cols;
-	int		i;
-
-	i = 0;
-	fd = open(path, O_RDONLY);
-	res = get_next_line(fd);
-	if (!res)
-		return (0);
-	cols = ft_strlen(res);
-	while (res)
-	{
-		if (cols != ft_strlen(res))
-			return (0);
-		i++;
-		res = get_next_line(fd);
-	}
-	close(fd);
-	return (i);
-}
-s_map	*alloc_map(s_map *map, int rows)
-{
-	map = malloc(sizeof(s_map));
-	if (!map)
-		return (NULL);
-	map->map = malloc(sizeof(char *) * rows);
-	if (!map->map)
-		return (NULL);
-	return (map);
-}
-void	ft_map_row_cp(char **dest, char *src)
-{
-	*dest = malloc(ft_strlen(src) + 1);
-	if (!dest)
-		return ;
-	ft_strlcpy(*dest, (const char *)src, ft_strlen(src));
-}
 s_map	*parse_map(const char *path)
 {
 	int		fd;
@@ -70,8 +29,6 @@ s_map	*parse_map(const char *path)
 	cols = ft_strlen(res);
 	while (res)
 	{
-		if (cols != ft_strlen(res))
-			return (NULL);
 		ft_map_row_cp(&map->map[rows], res);
 		rows++;
 		res = get_next_line(fd);
@@ -81,11 +38,35 @@ s_map	*parse_map(const char *path)
 	map->rows = rows;
 	return (map);
 }
+// Main validation function
+int validate_map(s_map *map_data)
+{
+	Position player_start;
+	if (!entity_check(map_data))
+		return 0;
+	if (!is_rectangular(map_data))
+		return 0;
+	if (!is_surrounded_by_walls(map_data))
+		return 0;
+	if (!check_map_components(map_data, &player_start))
+		return 0;
+	if (!check_valid_path(map_data, player_start))
+		return 0;
+
+	return 1;
+}
 s_map	*init_map(const char *path)
 {
 	s_map	*map;
 
 	map = parse_map(path);
-	/* map validation happens here! */
-	return (map);
+	if (validate_map(map))
+	{
+		printf("MAP is VALID!!\n");
+		printf("MAP is\n");
+		ft_print_map(map);
+		return (map);
+	}
+	else
+		return (NULL);
 }

@@ -1,17 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   map_validations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 01:20:01 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/18 02:00:40 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int	entity_check(s_map *map_data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while(i < map_data->rows)
+	{
+		j = 0;
+		while (j < map_data->cols)
+		{
+			if(map_data->map[i][j] != WALL && map_data->map[i][j] != PLAYER
+			&& map_data->map[i][j] != COLLECTABLE && map_data->map[i][j] != EXIT
+			&& map_data->map[i][j] != EMPTY)
+			{
+				ft_putstr_fd("Error\nInvalid Char in the map data\n",1);
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 // Function to check if there's a valid path using the map copy and fill info
 int check_valid_path(s_map *map_data, Position player_start)
 {
@@ -48,10 +72,10 @@ int is_rectangular(s_map *map_data)
 	int len;
 
 	i = 1;
-	len = strlen(map_data->map[0]);
+	len = ft_strlen(map_data->map[0]);
 	while (i < map_data->rows)
 	{
-		if (strlen(map_data->map[i]) != len)
+		if (ft_strlen(map_data->map[i]) != len)
 		{
 			ft_putstr_fd("Error\nMap must be rectangular.\n",1);
 			return 0;
@@ -110,49 +134,3 @@ int check_map_components(s_map *map_data, Position *player_start)
 	}
 	return 1;
 }
-
-// Main validation function
-int validate_map(s_map *map_data)
-{
-	Position player_start;
-
-	if (!is_rectangular(map_data))
-		return 0;
-	if (!is_surrounded_by_walls(map_data))
-		return 0;
-	if (!check_map_components(map_data, &player_start))
-		return 0;
-	if (!check_valid_path(map_data, player_start))
-		return 0;
-
-	return 1;
-}
-// int main() {
-//     // Example map for testing
-//     char *map[] = {
-//         strdup("111111111"),
-//         strdup("1P0C01C11"),
-//         strdup("1010000E1"),
-//         strdup("111111111")
-//     };
-
-//     s_map map_data;
-//     map_data.map = map;
-//     map_data.rows = 4;
-//     map_data.cols = strlen(map[0]);
-
-//     if (validate_map(&map_data)) {
-//         printf("Map is valid!\n");
-//     } else {
-//         printf("Map is invalid!\n");
-//     }
-
-//     // Free dynamically allocated memory for map
-//     int i = 0;
-//     while (i < map_data.rows) {
-//         free(map_data.map[i]);
-//         i++;
-//     }
-
-//     return 0;
-// }
