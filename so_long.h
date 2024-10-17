@@ -7,7 +7,7 @@
 #include <X11/X.h>
 #include "./libft/libft.h"
 #include "./src/get_next_line/get_next_line.h"
-#include "./ft_printf/ft_printf.h"
+// #include "./ft_printf/ft_printf.h"
 
 typedef struct t_map
 {
@@ -38,7 +38,7 @@ typedef struct t_mlx
 s_map *init_map(const char *path);
 
 //event handlers
-int	close_win(int keycode, s_mlx *mlx_data);
+int	close_win(s_mlx *mlx_data);
 int	handle_keypress(int keysym, s_mlx *mlx_data);
 
 

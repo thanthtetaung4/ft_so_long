@@ -29,11 +29,9 @@ int	main(void)
 	// 	ft_printf("moving\n");
 	// 	usleep(40000);
 	// }
-	// mlx_hook(mlx_data.win, KeyPress, KeyPressMask, &handle_keypress, &mlx_data);
-	mlx_hook(mlx_data.win, DestroyNotify, NoEventMask, &close_win, &mlx_data);
+	mlx_hook(mlx_data.win, KeyPress, KeyPressMask, &handle_keypress, &mlx_data);
+	mlx_hook(mlx_data.win, DestroyNotify, StructureNotifyMask, &close_win, &mlx_data);
 	mlx_loop(mlx_data.mlx);
-	mlx_destroy_display(mlx_data.mlx);
-
 }
 // #include "../so_long.h"
 
