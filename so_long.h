@@ -58,6 +58,7 @@ s_map *init_map(const char *path);
 int	count_row(const char *path);
 s_map	*alloc_map(s_map *map, int rows);
 void	ft_map_row_cp(char **dest, char *src);
+int	path_check(const char *path);
 
 //map validation utils
 char **copy_map(s_map *map_data);

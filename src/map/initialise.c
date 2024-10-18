@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialise.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 02:01:40 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:56:36 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ s_map	*init_map(const char *path)
 	s_map	*map;
 
 	map = parse_map(path);
+	if (!(path_check(path)))
+		return NULL;
 	if (validate_map(map))
 	{
 		printf("MAP is VALID!!\n");
