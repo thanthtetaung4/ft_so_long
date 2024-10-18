@@ -13,8 +13,11 @@ CFLAGS =
 MAP_PATH = ./src/map
 WIN_CTRL_PATH = ./src/win_ctrl
 UTILS_PATH = ./src/utils
+RENDER_PATH= ./src/render
 SRCS = src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
-		$(UTILS_PATH)/print_utils.c $(MAP_PATH)/initialise.c $(MAP_PATH)/parse_utils.c $(MAP_PATH)/map_validations.c $(MAP_PATH)/validation_utils.c $(WIN_CTRL_PATH)/win_ctrl.c # Add other source files as needed
+		$(UTILS_PATH)/print_utils.c $(MAP_PATH)/initialise.c $(MAP_PATH)/parse_utils.c \
+		$(MAP_PATH)/map_validations.c $(MAP_PATH)/validation_utils.c $(WIN_CTRL_PATH)/win_ctrl.c \
+		$(RENDER_PATH)/img_utils.c $(RENDER_PATH)/render_utils.c $(RENDER_PATH)/render.c # Add other source files as needed
 OBJS = $(SRCS:.c=.o)
 
 # Compiler
@@ -42,6 +45,16 @@ $(LIBFT):
 # $(PRINTF_LIB):
 # 	@$(MAKE) -C $(PRINTF_PATH)
 
+# Test
+TEST = mytest
+TEST_PATH = ./test
+TEST_SRCS = $(TEST_PATH)/render_test.c
+TETST_OBJS = $(TEST_SRCS:.c=.o)
+test: $(TEST)
+	 @echo "\033[32m[$(test) is ready for use]\033[0m"
+
+$(TEST): $(TETST_OBJS) $(MLX_LIB) $(LIBFT)
+	$(CC) $(CFLAGS) $(TETST_OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) -lft -o $(TEST)
 # Clean object files
 clean:
 	rm -f $(OBJS)

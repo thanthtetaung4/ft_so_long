@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_validations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 02:00:40 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 03:57:01 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	entity_check(s_map *map_data)
+int	entity_check(t_map *map_data)
 {
 	int	i;
 	int	j;
@@ -37,7 +37,7 @@ int	entity_check(s_map *map_data)
 	return (1);
 }
 // Function to check if there's a valid path using the map copy and fill info
-int check_valid_path(s_map *map_data, Position player_start)
+int check_valid_path(t_map *map_data, Position player_start)
 {
 	t_fill_info fill_info;
 	char **map_copy;
@@ -66,7 +66,7 @@ int check_valid_path(s_map *map_data, Position player_start)
 }
 
 // Function to check if the map is rectangular
-int is_rectangular(s_map *map_data)
+int is_rectangular(t_map *map_data)
 {
 	int i;
 	int len;
@@ -86,7 +86,7 @@ int is_rectangular(s_map *map_data)
 }
 
 // Function to check if the map is surrounded by walls
-int is_surrounded_by_walls(s_map *map_data)
+int is_surrounded_by_walls(t_map *map_data)
 {
 	int i;
 	int j;
@@ -115,7 +115,7 @@ int is_surrounded_by_walls(s_map *map_data)
 }
 
 // Function to count exits, players, and collectables
-int check_map_components(s_map *map_data, Position *player_start)
+int check_map_components(t_map *map_data, Position *player_start)
 {
 	int exits;
 	int players;
@@ -132,5 +132,6 @@ int check_map_components(s_map *map_data, Position *player_start)
 		ft_putstr_fd("Error\nInvalid map configuration.\n",1);
 		return 0;
 	}
+
 	return 1;
 }

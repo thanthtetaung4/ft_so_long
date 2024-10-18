@@ -6,17 +6,17 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 21:56:36 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 03:33:54 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-s_map	*parse_map(const char *path)
+t_map	*parse_map(const char *path)
 {
 	int		fd;
 	char	*res;
-	s_map	*map;
+	t_map	*map;
 	int		rows;
 	int		cols;
 
@@ -39,7 +39,7 @@ s_map	*parse_map(const char *path)
 	return (map);
 }
 // Main validation function
-int validate_map(s_map *map_data)
+int validate_map(t_map *map_data)
 {
 	Position player_start;
 	if (!entity_check(map_data))
@@ -55,9 +55,9 @@ int validate_map(s_map *map_data)
 
 	return 1;
 }
-s_map	*init_map(const char *path)
+t_map	*init_map(const char *path)
 {
-	s_map	*map;
+	t_map	*map;
 
 	map = parse_map(path);
 	if (!(path_check(path)))

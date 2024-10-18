@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:43:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 22:02:48 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 03:52:58 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	count_row(const char *path)
 	close(fd);
 	return (i);
 }
-s_map	*alloc_map(s_map *map, int rows)
+t_map	*alloc_map(t_map *map, int rows)
 {
-	map = malloc(sizeof(s_map));
+	map = malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
 	map->map = malloc(sizeof(char *) * rows);

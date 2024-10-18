@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 00:44:07 by taung             #+#    #+#             */
-/*   Updated: 2024/10/18 01:14:57 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 03:54:06 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-char **copy_map(s_map *map_data)
+char **copy_map(t_map *map_data)
 {
 	char **map_copy;
 	int i;
@@ -45,7 +45,7 @@ void free_map_copy(char **map_copy, int rows)
 	free(map_copy);
 }
 
-Position find_player_start(s_map *map_data)
+Position find_player_start(t_map *map_data)
 {
 	Position player_pos;
 	int i;
@@ -100,7 +100,7 @@ int flood_fill(t_fill_info *info, Position pos, int rows, int cols)
 	return 1;
 }
 
-void count_components(s_map *map_data, Position *player_start, int *exits, int *players)
+void count_components(t_map *map_data, Position *player_start, int *exits, int *players)
 {
 	int i, j;
 
