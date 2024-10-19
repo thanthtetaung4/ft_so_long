@@ -13,11 +13,13 @@ CFLAGS =
 MAP_PATH = ./src/map
 WIN_CTRL_PATH = ./src/win_ctrl
 UTILS_PATH = ./src/utils
-RENDER_PATH= ./src/render
+RENDER_PATH = ./src/render
+GAME_PATH = ./src/game
 SRCS = src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
 		$(UTILS_PATH)/print_utils.c $(MAP_PATH)/initialise.c $(MAP_PATH)/parse_utils.c \
 		$(MAP_PATH)/map_validations.c $(MAP_PATH)/validation_utils.c $(WIN_CTRL_PATH)/win_ctrl.c \
-		$(RENDER_PATH)/img_utils.c $(RENDER_PATH)/render_utils.c $(RENDER_PATH)/render.c # Add other source files as needed
+		$(RENDER_PATH)/img_utils.c $(RENDER_PATH)/render_utils.c $(RENDER_PATH)/render.c \
+		$(GAME_PATH)/player.c $(GAME_PATH)/game.c $(MAP_PATH)/map_utils.c $(GAME_PATH)/player_utils.c# Add other source files as needed
 OBJS = $(SRCS:.c=.o)
 
 # Compiler

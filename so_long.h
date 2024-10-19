@@ -39,10 +39,7 @@ typedef struct s_data
 	void	*mlx_win;
 	int		win_height;
 	int		win_width;
-	int		p_x;
-	int		p_y;
-	int		win;
-	int		points;
+	t_player player;
 	t_img images[5];
 	t_map map;
 }	t_data;
@@ -70,9 +67,13 @@ typedef struct {
 #define PATH_IMG "textures/path.xpm"
 #define FISH_IMG "textures/fish.xpm"
 #define EXIT_IMG "textures/bed.xpm"
+#define IMAGE_SIZE 40
 
 //map
 t_map *init_map(const char *path);
+
+//map utilities
+void	update_map(t_data *data, int x, int y, char entity);
 
 //map parse utils
 int	count_row(const char *path);
@@ -110,5 +111,19 @@ void	init_img(t_data *data);
 void	init_mlx(t_data *data, t_map *map);
 void	calc_win_dimensions (t_map *map, t_data *data);
 void	parse_chars(t_data *data, int i, int j);
+void	render_player(t_data *data);
+
+//player
+void	init_player(t_data *data);
+void	move_player(t_data *data, int x, int y);
+void	get_pos_from_map (t_data *data);
+
+//player utils
+int		is_valid_move(t_data *data, int x, int y);
+int		is_exit(t_data *data, int x, int y);
+int		is_collectable(t_data *data, int x, int y);
+
+//game
+void	win(t_data *data);
 
 #endif

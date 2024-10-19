@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_utils.c                                     :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:20:28 by taung             #+#    #+#             */
-/*   Updated: 2024/10/14 21:26:28 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 22:53:37 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../so_long.h"
 
-
-
+void	update_map(t_data *data, int x, int y, char entity)
+{
+	data->map.map[y][x] = entity;
+}

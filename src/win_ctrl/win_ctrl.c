@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_ctrl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:46:33 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 04:58:36 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/19 22:58:31 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	close_win(t_data *data)
 
 int	handle_keypress(int keysym, t_data *data)
 {
-	printf("player is at x:%d,y:%d\n",data->p_x,data->p_y);
+	printf("player is at x:%d,y:%d, point: %d\n",data->player.p_x,data->player.p_y,data->player.points);
 	if (keysym == XK_Escape)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
@@ -39,22 +39,25 @@ int	handle_keypress(int keysym, t_data *data)
 		if (keysym == XK_w)
 		{
 			ft_putchar_fd('w',1);
-			data->p_y-=20;
+			// data->p_y-=20;
+			move_player(data,0,-1);
 		}
 		else if (keysym == XK_a)
 		{
 			ft_putchar_fd('a',1);
-			data->p_x-=20;
+			move_player(data,-1,0);
+
 		}
 		else if (keysym == XK_s)
 		{
 			ft_putchar_fd('s',1);
-			data->p_y+=20;
+			move_player(data,0,1);
+
 		}
 		else if (keysym == XK_d)
 		{
 			ft_putchar_fd('d',1);
-			data->p_x+=20;
+			move_player(data,1,0);
 		}
 		else
 			ft_putstr_fd("try pressing wasd!",1);
