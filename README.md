@@ -6,7 +6,7 @@ This README provides instructions on how to build and run the `so_long` game usi
 
   * **Compiler:** gcc (or compatible)
   * **Libraries:**
-      * MiniLibX ([https://github.com/yazan-metax/minilibX](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/yazan-metax/minilibX))
+      * MiniLibX (https://github.com/42Paris/minilibx-linux.git)
 
 **Building the Game:**
 
