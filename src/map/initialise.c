@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 02:42:08 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:13:24 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_map	*parse_map(const char *path)
 	t_map	*map;
 	int		rows;
 
+	map = NULL;
 	rows = 0;
 	map = alloc_map(map, count_row(path));
 	fd = open(path, O_RDONLY);

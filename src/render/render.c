@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:33:48 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 00:17:11 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:15:42 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,22 @@
 
 int	render_img(t_data *data)
 {
+	int	i;
+	int	j;
+
+	i = 0;
 	if (!data->mlx_win)
 		return 1;
-	for (size_t i = 0; i < data->map.rows; i++)
+	while (i < data->map.rows)
 	{
-		for (size_t j = 0; j < data->map.cols; j++)
+		j = 0;
+		while (j < data->map.cols)
 		{
 			parse_chars(data,i,j);
 			render_player(data);
+			j++;
 		}
+		i++;
 	}
 	return 0;
 }

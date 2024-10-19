@@ -6,8 +6,8 @@ MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
+# CFLAGS =
 
 # Source and object files
 MAP_PATH = ./src/map

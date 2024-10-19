@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 02:43:01 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:14:13 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int check_valid_path(t_map *map_data, Position player_start)
 int is_rectangular(t_map *map_data)
 {
 	int i;
-	int len;
+	size_t len;
 
 	i = 1;
 	len = ft_strlen(map_data->map[0]);
