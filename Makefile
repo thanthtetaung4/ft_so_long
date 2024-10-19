@@ -45,10 +45,6 @@ $(MLX_LIB):
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
 
-# # Compile the ft_printf library
-# $(PRINTF_LIB):
-# 	@$(MAKE) -C $(PRINTF_PATH)
-
 # Test
 TEST = mytest
 TEST_PATH = ./test
@@ -70,7 +66,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-# @$(MAKE) -C $(PRINTF_PATH) fclean
 	@echo "\033[33m[Fully cleaned up]\033[0m"
 
 # Recompile everything
