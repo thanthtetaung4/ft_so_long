@@ -1,6 +1,5 @@
 ## so_long: Building and Running the Game
-
-This README provides instructions on how to build and run the `so_long` game using the provided Makefile.
+`so_long` is a simple 2D game developed using the MiniLibX library for rendering. The game features basic controls and gameplay where the player interacts with a map, collecting items and finding exit.
 
 **Requirements:**
 
