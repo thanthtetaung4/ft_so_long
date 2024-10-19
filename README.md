@@ -12,6 +12,11 @@
 1.  **Clone or Download the Project:**
     Make sure you have a copy of the project directory containing the `Makefile`.
 
+	```bash
+    git clone https://github.com/thanthtetaung4/ft_so_long.git
+	cd ft_so_long
+    ```
+
 2.  **Compile Dependencies:**
     The Makefile relies on two external libraries, MiniLibX and Libft. You need to compile these libraries before building `so_long`.
 
