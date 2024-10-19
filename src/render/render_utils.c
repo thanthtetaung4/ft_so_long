@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:43:17 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 22:42:22 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 02:52:10 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_mlx(t_data *data, t_map *map)
 	calc_win_dimensions(map, data);
 	data->mlx_win = mlx_new_window(data->mlx, data->win_width, data->win_height, "so_long");
 	data->map = *map;
-	ft_print_map(&data->map);
 	init_img(data);
 }
 
@@ -36,7 +35,6 @@ void	parse_chars(t_data *data, int i, int j)
 	x = j * IMAGE_SIZE;
 	y = i * IMAGE_SIZE;
 
-	// printf("map[0][0] : %d\n",data->map.map[0][0] == '1');
 	if (data->map.map[i][j] == '1')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->images[2].mlx_img, x,y);

@@ -3,145 +3,138 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 13:57:56 by taung             #+#    #+#             */
-/*   Updated: 2024/10/14 21:29:47 by taung            ###   ########.fr       */
+/*   Created: 2021/11/30 17:01:03 by msanjuan          #+#    #+#             */
+/*   Updated: 2024/10/20 01:53:33 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#include "./get_next_line.h"
 
-char	*handle_eof(char *line, char **buffer, int br)
+int	ft_malloc_count(char *stock)
 {
-	free(*buffer);
-	if (br == 0)
-	{
-		if (line && line[0])
-			return (line);
-		else
-			return (NULL);
-	}
-	return (NULL);
+	int	i;
+
+	i = 0;
+	if (f_strchr_gnl(stock, '\n') == NULL)
+		return (ft_strlen_gnl(stock));
+	while (stock[i] != '\n' && stock[i] != '\0')
+		i++;
+	return (i + 1);
 }
 
-char	*read_line(int fd, char *store)
+char	*ft_get_the_line(char *stock)
 {
-	char	*buffer;
-	int		br;
 	char	*line;
-	int		foundnl;
+	int		i;
+	int		len;
 
-	foundnl = 0;
-	line = store;
-	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	line = NULL;
+	len = ft_malloc_count(stock);
+	line = (char *)malloc(sizeof(char) * (len + 1));
+	if (!line)
 		return (NULL);
-	while (!(foundnl))
+	i = 0;
+	while (stock[i] && i < len)
 	{
-		br = read(fd, buffer, BUFFER_SIZE);
-		if (br > 0)
-		{
-			buffer[br] = '\0';
-			foundnl = check_newline(buffer);
-			line = ft_strjoin_gnl(line, buffer);
-		}
-		else
-			return (handle_eof(line, &buffer, br));
+		line[i] = stock[i];
+		i++;
 	}
-	free(buffer);
+	line[i] = '\0';
 	return (line);
 }
 
-char	*get_store(char *line)
+void	ft_get_the_spare(char *buffer)
 {
-	size_t	i;
-	size_t	j;
-	char	*store;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (line[i] != '\n' && line[i])
+	while (buffer[i] != '\n')
 		i++;
-	if (line[i] == '\n')
-		i++;
-	store = malloc(ft_strlen(line) - i + 1);
-	if (!store)
-		return (NULL);
+	i = i + 1;
 	j = 0;
-	while (line[i + j])
+	while (i < BUFFER_SIZE)
 	{
-		store[j] = line[i + j];
+		buffer[j] = buffer[i];
+		i++;
 		j++;
 	}
-	store[j] = '\0';
-	return (store);
+	buffer[j] = '\0';
 }
 
-char	*get_res_line(char *line)
+char	*ft_line_results(int ret, char *stock, char *buffer)
 {
-	size_t	i;
-	size_t	j;
-	char	*res;
+	char		*line;
 
-	i = 0;
-	while (line[i] && line[i] != '\n')
-		i++;
-	if (line[i] == '\n')
-		i++;
-	res = (char *)malloc((i + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	j = 0;
-	while (j < i)
+	line = NULL;
+	if (ft_strlen_gnl(stock) == 0)
 	{
-		res[j] = line[j];
-		j++;
+		free(stock);
+		return (NULL);
 	}
-	res[j] = '\0';
-	return (res);
+	line = ft_get_the_line(stock);
+	if (ret > 0)
+		ft_get_the_spare(buffer);
+	free(stock);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*store = NULL;
-	char		*line;
-	char		*res;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*stock;
+	int			ret;
 
-	res = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	stock = NULL;
+	if ((read(fd, buffer, 0) == -1) || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = read_line(fd, store);
-	if (!line)
+	ret = 1;
+	stock = f_strjoin_gnl(stock, buffer);
+	while (f_strchr_gnl(stock, '\n') == NULL && ret > 0)
 	{
-		free(store);
-		store = NULL;
-		return (NULL);
+		ret = read(fd, buffer, BUFFER_SIZE);
+		if (ret < 0)
+		{
+			free(stock);
+			return (NULL);
+		}
+		buffer[ret] = '\0';
+		stock = f_strjoin_gnl(stock, buffer);
 	}
-	res = get_res_line(line);
-	store = get_store(line);
-	free(line);
-	return (res);
+	return (ft_line_results(ret, stock, buffer));
 }
 // #include<fcntl.h>
-
+// #include <stdio.h>
 // int	main(void)
 // {
 // 	int			fd;
 // 	const char	*path;
 
-// 	path = "1char.txt";
+// 	path = "map1.ber";
 // 	// path = "test.txt";
 // 	// path = "test-long.txt";
 // 	printf("BUFFER_SIZE -> %i\n",BUFFER_SIZE);
 // 	fd = open(path, O_RDONLY);
-// 	printf("res1 : %s", get_next_line(fd));
+// 	char *res1 = get_next_line(fd);
+// 	char *res2 = get_next_line(fd);
+// 	char *res3 = get_next_line(fd);
+// 	char *res4 = get_next_line(fd);
+// 	char *res5 = get_next_line(fd);
+// 	printf("res1 : %s", res1);
 // 	// printf("\n-----------\n");
-// 	printf("res2 : %s", get_next_line(fd));
+// 	printf("res2 : %s", res2);
 // 	// printf("\n-----------\n");
-// 	printf("res3 : %s", get_next_line(fd));
+// 	printf("res3 : %s", res3);
 // 	// printf("\n-----------\n");
-// 	printf("res4 : %s", get_next_line(fd));
+// 	printf("res4 : %s", res4);
 // 	// printf("\n-----------\n");
-// 	printf("res5 : %s", get_next_line(fd));
+// 	printf("res5 : %s", res5);
+
+// 	free(res1);
+// 	free(res2);
+// 	free(res3);
+// 	free(res4);
+// 	free(res5);
 // }

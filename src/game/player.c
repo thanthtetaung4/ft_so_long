@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:34:22 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 23:10:19 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 02:49:24 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	move_player(t_data *data, int x, int y)
 	{
 		data->player.p_x += x;
 		data->player.p_y += y;
+		data->move_counter++;
+		ft_putstr_fd("MOVE COUNTER : ",1);
+		ft_putnbr_fd(data->move_counter,1);
+		ft_putstr_fd("\n",1);
 		if (is_collectable(data, data->player.p_x, data->player.p_y))
 		{
 			data->player.points++;
@@ -65,7 +69,5 @@ void	move_player(t_data *data, int x, int y)
 			}
 		}
 	}
-	else
-		ft_putstr_fd("INVALID MOVE\n",1);
 }
 

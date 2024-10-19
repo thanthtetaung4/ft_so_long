@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 13:57:56 by taung             #+#    #+#             */
-/*   Updated: 2024/10/14 21:30:39 by taung            ###   ########.fr       */
+/*   Created: 2021/11/30 17:00:15 by msanjuan          #+#    #+#             */
+/*   Updated: 2024/10/20 02:05:04 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 1024
 # endif
+
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../../libft/libft.h"
 
+char	*f_strchr_gnl(char *s, int c);
+char	*f_strjoin_gnl(char *s1, char *s2);
+char	*f_strdup_gnl(char *s1);
 char	*get_next_line(int fd);
-// size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t size);
-size_t	ft_strlcat_gnl(char *dst, const char *src, size_t size);
-char	*ft_strjoin_gnl(char *line, char *buff);
-int		check_newline(const char *str);
+size_t	ft_strlen_gnl(const char *str);
 
 #endif

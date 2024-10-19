@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 03:57:01 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 02:43:01 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	entity_check(t_map *map_data)
 	}
 	return (1);
 }
-// Function to check if there's a valid path using the map copy and fill info
+
 int check_valid_path(t_map *map_data, Position player_start)
 {
 	t_fill_info fill_info;
@@ -65,7 +65,6 @@ int check_valid_path(t_map *map_data, Position player_start)
 	return 1;
 }
 
-// Function to check if the map is rectangular
 int is_rectangular(t_map *map_data)
 {
 	int i;
@@ -85,7 +84,6 @@ int is_rectangular(t_map *map_data)
 	return 1;
 }
 
-// Function to check if the map is surrounded by walls
 int is_surrounded_by_walls(t_map *map_data)
 {
 	int i;
@@ -114,7 +112,6 @@ int is_surrounded_by_walls(t_map *map_data)
 	return 1;
 }
 
-// Function to count exits, players, and collectables
 int check_map_components(t_map *map_data, Position *player_start)
 {
 	int exits;
@@ -123,15 +120,11 @@ int check_map_components(t_map *map_data, Position *player_start)
 	exits = 0;
 	players = 0;
 	map_data->collectables = 0;
-
-	// Call the helper function to count components
 	count_components(map_data, player_start, &exits, &players);
-
 	if (exits != 1 || players != 1 || map_data->collectables < 1)
 	{
 		ft_putstr_fd("Error\nInvalid map configuration.\n",1);
 		return 0;
 	}
-
 	return 1;
 }

@@ -39,6 +39,7 @@ typedef struct s_data
 	void	*mlx_win;
 	int		win_height;
 	int		win_width;
+	int		move_counter;
 	t_player player;
 	t_img images[5];
 	t_map map;
@@ -61,7 +62,6 @@ typedef struct {
 #define COLLECTABLE 'C'
 #define EXIT 'E'
 #define PLAYER 'P'
-#define BUFFER_SIZE 5
 #define CAT_IMG "textures/cat.xpm"
 #define WALL_IMG "textures/wall.xpm"
 #define PATH_IMG "textures/path.xpm"
@@ -125,5 +125,8 @@ int		is_collectable(t_data *data, int x, int y);
 
 //game
 void	win(t_data *data);
+
+//free
+void	free_all(t_data	*data);
 
 #endif

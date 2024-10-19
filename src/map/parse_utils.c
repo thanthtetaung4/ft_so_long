@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:43:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 03:52:58 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 02:33:40 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	count_row(const char *path)
 {
 	int		fd;
 	char	*res;
-	int		cols;
 	int		i;
 
 	i = 0;
@@ -29,13 +28,15 @@ int	count_row(const char *path)
 	res = get_next_line(fd);
 	if (!res)
 		return (0);
-	cols = ft_strlen(res);
 	while (res)
 	{
+		free(res);
+		res = NULL;
 		i++;
 		res = get_next_line(fd);
 	}
 	close(fd);
+	free(res);
 	return (i);
 }
 t_map	*alloc_map(t_map *map, int rows)
@@ -68,13 +69,3 @@ int	path_check(const char *path)
 	ft_putstr_fd("\033[31;1mPath KO :(\033[0m\n",2);
 	return (0);
 }
-
-// int main()
-// {
-// 	char *path = "map.ber";
-// 	if (path_check(path))
-// 	{
-// 		printf("PATH OK");
-// 	}
-
-// }

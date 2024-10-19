@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 22:14:13 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 02:42:08 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_map	*parse_map(const char *path)
 	char	*res;
 	t_map	*map;
 	int		rows;
-	int		cols;
 
 	rows = 0;
 	map = alloc_map(map, count_row(path));
@@ -26,19 +25,21 @@ t_map	*parse_map(const char *path)
 	res = get_next_line(fd);
 	if (!res)
 		return (NULL);
-	cols = ft_strlen(res);
+	map->cols = ft_strlen(res) - 1;
 	while (res)
 	{
 		ft_map_row_cp(&map->map[rows], res);
+		free(res);
+		res = NULL;
 		rows++;
 		res = get_next_line(fd);
 	}
 	close(fd);
-	map->cols = --cols;
 	map->rows = rows;
+	free(res);
 	return (map);
 }
-// Main validation function
+
 int validate_map(t_map *map_data)
 {
 	Position player_start;
@@ -63,12 +64,7 @@ t_map	*init_map(const char *path)
 	if (!(path_check(path)))
 		return NULL;
 	if (validate_map(map))
-	{
-		printf("MAP is VALID!!\n");
-		printf("MAP is\n");
-		ft_print_map(map);
 		return (map);
-	}
 	else
 		return (NULL);
 }

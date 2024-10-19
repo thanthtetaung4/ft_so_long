@@ -3,105 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 13:57:56 by taung             #+#    #+#             */
-/*   Updated: 2024/10/14 21:28:55 by taung            ###   ########.fr       */
+/*   Created: 2021/11/30 17:01:46 by msanjuan          #+#    #+#             */
+/*   Updated: 2024/10/20 01:53:14 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./get_next_line.h"
 
-// size_t	ft_strlen(const char *str)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (!str)
-// 		return (0);
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
-
-int	check_newline(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
 		i++;
-	}
-	return (0);
+	return (i);
 }
 
-size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t size)
+char	*f_strchr_gnl(char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
+	while (*s)
 	{
-		while (src[i] != '\0' && i < (size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		if (*s == (char)c)
+			return (s);
+		s++;
 	}
-	return (ft_strlen(src));
-}
-
-size_t	ft_strlcat_gnl(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	size_t	dl;
-
-	i = 0;
-	j = ft_strlen(dst);
-	dl = j;
-	if (size <= dl)
-		return (size + ft_strlen(src));
-	while (src[i] && i + dl + 1 < size)
-	{
-		dst[j] = src[i];
-		j++;
-		i++;
-	}
-	if (j < size)
-		dst[j] = '\0';
-	return (dl + ft_strlen(src));
-}
-
-char	*ft_strjoin_gnl(char *line, char *buff)
-{
-	size_t	j;
-	size_t	len;
-	char	*str;
-
-	j = 0;
-	if (!line)
-	{
-		line = (char *)malloc(1);
-		if (!line || !buff)
-			return (NULL);
-		line[0] = '\0';
-	}
-	else
-		j = ft_strlen(line);
-	len = j + ft_strlen(buff);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-	{
-		free(line);
+	if (*s != (char)c)
 		return (NULL);
+	return (s);
+}
+
+char	*f_strdup_gnl(char *s1)
+{
+	char	*copy;
+	int		i;
+
+	i = 0;
+	copy = (char *)malloc((ft_strlen_gnl(s1) + 1) * sizeof(char));
+	if (!copy)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		copy[i] = s1[i];
+		i++;
 	}
-	ft_strlcpy_gnl(str, line, j + 1);
-	ft_strlcat_gnl(str, buff, len + 1);
-	free(line);
-	return (str);
+	copy[i] = '\0';
+	return (copy);
+}
+
+char	*f_strjoin_gnl(char *s1, char *s2)
+{
+	char	*res;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (s1 == NULL)
+		return (f_strdup_gnl(s2));
+	res = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	if (!res)
+		return (NULL);
+	while (s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		res[i] = s2[j];
+		i++;
+		j++;
+	}
+	res[i] = '\0';
+	free(s1);
+	return (res);
 }
