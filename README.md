@@ -22,9 +22,9 @@ This README provides instructions on how to build and run the `so_long` game usi
           * Navigate to the MiniLibX directory within your project (usually `./mlx`).
           * Run `make` to compile the library. This will create `libmlx.a` which the Makefile references.
 
-      * **Libft (Optional):**
+      * **Libft:**
 
-          * If you plan to use the included `libft` library (for internal functions), follow similar steps to compile it within the `./libft` directory.
+          * It is included in this git :).
 
 3.  **Build `so_long`:**
     Navigate back to the main project directory containing the `Makefile`.
@@ -43,7 +43,7 @@ This README provides instructions on how to build and run the `so_long` game usi
   * You can run the game by executing:
 
     ```bash
-    ./so_long
+    ./so_long $(MAP_PATH)
     ```
 
 This will launch the `so_long` game (assuming you have the required libraries installed or linked correctly).
