@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:43:17 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 15:34:31 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 18:46:05 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ void	parse_chars(t_data *data, int i, int j)
 			data->images[2].mlx_img, x, y);
 	else if (data->map.map[i][j] == 'E')
 	{
-		if (data->player.points == data->map.collectables)
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->images[4].mlx_img, x, y);
-		else
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->images[1].mlx_img, x, y);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->images[4].mlx_img, x, y);
 	}
 	else if (data->map.map[i][j] == 'C')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
