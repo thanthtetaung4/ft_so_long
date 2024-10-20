@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:21:35 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 18:57:09 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:26:17 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int			handle_keypress(int keysym, t_data *data);
 // rendering
 int			render_img(t_data *data);
 void		init_img(t_data *data);
+void		mlx_render(t_data *data);
+
 
 //rendering utils
 void		init_mlx(t_data *data, t_map *map);

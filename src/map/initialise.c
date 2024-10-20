@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 19:08:03 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:43:25 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	validate_map(t_map *map_data)
 {
 	t_Position	player_start;
 
-	if (!entity_check(map_data))
-		return (0);
 	if (!is_rectangular(map_data))
+		return (0);
+	if (!entity_check(map_data))
 		return (0);
 	if (!is_surrounded_by_walls(map_data))
 		return (0);

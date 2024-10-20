@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 17:26:44 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:42:41 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	entity_check(t_map *map_data)
 			&& map_data->map[i][j] != COLLECTABLE && map_data->map[i][j] != EXIT
 			&& map_data->map[i][j] != EMPTY)
 			{
-				ft_putstr_fd("Error\nInvalid Char in the map data\n", 1);
+				ft_putstr_fd("Error\nInvalid Char in the map data.\n", 1);
 				return (0);
 			}
 			j++;
@@ -45,7 +45,6 @@ int	check_valid_path(t_map *map_data, t_Position player_start)
 	map_copy = copy_map(map_data);
 	if (!map_copy)
 	{
-		ft_putstr_fd("Error\nMemory allocation failed.\n", 1);
 		return (0);
 	}
 	fill_info.map = map_copy;

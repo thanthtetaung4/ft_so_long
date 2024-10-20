@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:01:31 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 18:50:53 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:28:22 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ int	main(int argc, char *argv[])
 		init_player(&data);
 		init_mlx(&data, &data.map);
 		render_img(&data);
-		mlx_loop_hook(data.mlx, &render_img, &data);
-		mlx_hook(data.mlx_win, KeyPress, KeyPressMask, &handle_keypress, &data);
-		mlx_hook(data.mlx_win, DestroyNotify,
-			StructureNotifyMask, &close_win, &data);
-		mlx_loop(data.mlx);
+		mlx_render(&data);
 		free_all(&data);
 		return (0);
 	}
 	else
+	{
+		ft_putstr_fd("\033[31;1mError\nUsage: ./so_long <valid_path>\033[0m\n", 1);
 		return (1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:43:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 15:56:56 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:38:16 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,17 @@ void	ft_map_row_cp(char **dest, char *src)
 
 int	path_check(const char *path)
 {
-	if (*(ft_strrchr(path, '.')) == path[ft_strlen(path) - 4]
+	if (ft_strlen(path) > 5)
+	{
+		if (*(ft_strrchr(path, '.')) == path[ft_strlen(path) - 4]
 		&& *(ft_strrchr(path, 'b')) == path[ft_strlen(path) - 3]
 		&& *(ft_strrchr(path, 'e')) == path[ft_strlen(path) - 2]
 		&& *(ft_strrchr(path, 'r')) == path[ft_strlen(path) - 1])
-	{
-		if (open(path, O_RDONLY) > -1)
-			return (1);
+		{
+			if (open(path, O_RDONLY) > -1)
+				return (1);
+		}
 	}
-	ft_putstr_fd("\033[31;1mPath KO :(\033[0m\n", 2);
+	ft_putstr_fd("Error\nPath KO :(\n", 2);
 	return (0);
 }
