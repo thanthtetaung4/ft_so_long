@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 23:30:15 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 02:50:23 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:08:25 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,22 @@ void	free_img(t_data	*data)
 	}
 }
 
-void	free_map(t_data *data)
+void	free_map(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	if (data->map.map)
+	if (map->map)
 	{
-		while (i < data->map.rows)
+		while (i < map->rows)
 		{
-			free(data->map.map[i]);
+			free(map->map[i]);
 			i++;
 		}
-		free(data->map.map);
-		data->map.map = NULL;
+		free(map->map);
+		map->map = NULL;
 	}
+	free(map);
 }
 
 void	free_mlx(t_data *data)
@@ -58,6 +59,6 @@ void	free_mlx(t_data *data)
 void	free_all(t_data *data)
 {
 	free_img(data);
-	free_map(data);
+	free_map(&data->map);
 	free_mlx(data);
 }

@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:21:35 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 17:25:26 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 18:57:09 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int			is_collectable(t_data *data, int x, int y);
 void		win(t_data *data);
 
 //free
+void		free_map(t_map *map);
 void		free_all(t_data	*data);
 
 #endif

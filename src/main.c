@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:01:31 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 18:47:02 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 18:50:53 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	main(int argc, char *argv[])
 	{
 		data.move_counter = 0;
 		map = (init_map(argv[1]));
+		if (!map)
+			return (1);
 		data.map = *(map);
 		free(map);
-		if (!(data.map.map))
-			return (1);
 		init_player(&data);
 		init_mlx(&data, &data.map);
 		render_img(&data);

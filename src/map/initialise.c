@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 17:25:41 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 19:08:03 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,16 @@ t_map	*init_map(const char *path)
 {
 	t_map	*map;
 
-	map = parse_map(path);
 	if (!(path_check(path)))
+	{
 		return (NULL);
+	}
+	map = parse_map(path);
 	if (validate_map(map))
 		return (map);
 	else
+	{
+		free_map(map);
 		return (NULL);
+	}
 }
