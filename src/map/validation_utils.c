@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 00:44:07 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 15:53:56 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 17:26:17 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	free_map_copy(char **map_copy, int rows)
 	free(map_copy);
 }
 
-Position	find_player_start(t_map *map_data)
+t_Position	find_player_start(t_map *map_data)
 {
-	Position	player_pos;
+	t_Position	player_pos;
 	int			i;
 	int			j;
 
@@ -74,9 +74,9 @@ Position	find_player_start(t_map *map_data)
 	return (player_pos);
 }
 
-int	flood_fill(t_fill_info *info, Position pos, int rows, int cols)
+int	flood_fill(t_fill_info *info, t_Position pos, int rows, int cols)
 {
-	Position	directions[4];
+	t_Position	directions[4];
 	int			i;
 
 	if (pos.x < 0 || pos.x >= rows || pos.y < 0 || pos.y >= cols)
@@ -102,7 +102,7 @@ int	flood_fill(t_fill_info *info, Position pos, int rows, int cols)
 	return (1);
 }
 
-void	count_components(t_map *map_data, Position *player_start,
+void	count_components(t_map *map_data, t_Position *player_start,
 		int *exits, int *players)
 {
 	int	i;

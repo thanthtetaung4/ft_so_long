@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 15:59:41 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 17:26:44 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	entity_check(t_map *map_data)
 	return (1);
 }
 
-int	check_valid_path(t_map *map_data, Position player_start)
+int	check_valid_path(t_map *map_data, t_Position player_start)
 {
 	t_fill_info	fill_info;
 	char		**map_copy;
@@ -110,7 +110,7 @@ int	is_surrounded_by_walls(t_map *map_data)
 	return (1);
 }
 
-int	check_map_components(t_map *map_data, Position *player_start)
+int	check_map_components(t_map *map_data, t_Position *player_start)
 {
 	int	exits;
 	int	players;
