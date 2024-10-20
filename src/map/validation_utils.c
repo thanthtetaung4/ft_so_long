@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 00:44:07 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 03:19:23 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 15:53:56 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-char **copy_map(t_map *map_data)
+char	**copy_map(t_map *map_data)
 {
-	char **map_copy;
-	int i;
+	char	**map_copy;
+	int		i;
 
 	map_copy = (char **)malloc(map_data->rows * sizeof(char *));
 	i = 0;
@@ -34,9 +34,11 @@ char **copy_map(t_map *map_data)
 	return (map_copy);
 }
 
-void free_map_copy(char **map_copy, int rows)
+void	free_map_copy(char **map_copy, int rows)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < rows)
 	{
 		free(map_copy[i]);
@@ -45,11 +47,11 @@ void free_map_copy(char **map_copy, int rows)
 	free(map_copy);
 }
 
-Position find_player_start(t_map *map_data)
+Position	find_player_start(t_map *map_data)
 {
-	Position player_pos;
-	int i;
-	int j;
+	Position	player_pos;
+	int			i;
+	int			j;
 
 	player_pos.x = -1;
 	player_pos.y = -1;
@@ -72,15 +74,15 @@ Position find_player_start(t_map *map_data)
 	return (player_pos);
 }
 
-int flood_fill(t_fill_info *info, Position pos, int rows, int cols)
+int	flood_fill(t_fill_info *info, Position pos, int rows, int cols)
 {
-	Position directions[4];
-	int i;
+	Position	directions[4];
+	int			i;
 
 	if (pos.x < 0 || pos.x >= rows || pos.y < 0 || pos.y >= cols)
-		return 0;
+		return (0);
 	if (info->map[pos.x][pos.y] == '1' || info->map[pos.x][pos.y] == 'F')
-		return 0;
+		return (0);
 	if (info->map[pos.x][pos.y] == 'C')
 		info->collected++;
 	if (info->map[pos.x][pos.y] == 'E')
@@ -97,11 +99,11 @@ int flood_fill(t_fill_info *info, Position pos, int rows, int cols)
 	i = -1;
 	while (++i < 4)
 		flood_fill(info, directions[i], rows, cols);
-	return 1;
+	return (1);
 }
 
-void count_components(t_map *map_data, Position *player_start,
-int *exits, int *players)
+void	count_components(t_map *map_data, Position *player_start,
+		int *exits, int *players)
 {
 	int	i;
 	int	j;

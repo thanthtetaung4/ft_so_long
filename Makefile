@@ -25,7 +25,7 @@ SRCS = src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_l
 OBJS = $(SRCS:.c=.o)
 
 # Compiler
-CC = gcc
+CC = cc
 
 # Executable name
 NAME = so_long

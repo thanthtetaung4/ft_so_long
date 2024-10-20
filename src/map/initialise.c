@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialise.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 03:13:24 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 16:01:10 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,30 @@ t_map	*parse_map(const char *path)
 	return (map);
 }
 
-int validate_map(t_map *map_data)
+int	validate_map(t_map *map_data)
 {
-	Position player_start;
-	if (!entity_check(map_data))
-		return 0;
-	if (!is_rectangular(map_data))
-		return 0;
-	if (!is_surrounded_by_walls(map_data))
-		return 0;
-	if (!check_map_components(map_data, &player_start))
-		return 0;
-	if (!check_valid_path(map_data, player_start))
-		return 0;
+	Position	player_start;
 
-	return 1;
+	if (!entity_check(map_data))
+		return (0);
+	if (!is_rectangular(map_data))
+		return (0);
+	if (!is_surrounded_by_walls(map_data))
+		return (0);
+	if (!check_map_components(map_data, &player_start))
+		return (0);
+	if (!check_valid_path(map_data, player_start))
+		return (0);
+	return (1);
 }
+
 t_map	*init_map(const char *path)
 {
 	t_map	*map;
 
 	map = parse_map(path);
 	if (!(path_check(path)))
-		return NULL;
+		return (NULL);
 	if (validate_map(map))
 		return (map);
 	else

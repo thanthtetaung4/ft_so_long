@@ -35,14 +35,14 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*mlx_win;
-	int		win_height;
-	int		win_width;
-	int		move_counter;
-	t_player player;
-	t_img images[5];
-	t_map map;
+	void		*mlx;
+	void		*mlx_win;
+	int			win_height;
+	int			win_width;
+	int			move_counter;
+	t_player	player;
+	t_img		images[5];
+	t_map		map;
 }	t_data;
 
 
