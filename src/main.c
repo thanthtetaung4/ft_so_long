@@ -18,7 +18,8 @@ int	main(int argc, char *argv[])
 		render_img(&data);
 		mlx_loop_hook(data.mlx, &render_img, &data);
 		mlx_hook(data.mlx_win, KeyPress, KeyPressMask, &handle_keypress, &data);
-		mlx_hook(data.mlx_win, DestroyNotify, StructureNotifyMask, &close_win, &data);
+		mlx_hook(data.mlx_win, DestroyNotify,
+		StructureNotifyMask, &close_win, &data);
 		mlx_loop(data.mlx);
 		free_all(&data);
 	}

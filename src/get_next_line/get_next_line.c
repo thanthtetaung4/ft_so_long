@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:01:03 by msanjuan          #+#    #+#             */
-/*   Updated: 2024/10/20 01:53:33 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:24:37 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_malloc_count(char *stock)
 
 	i = 0;
 	if (f_strchr_gnl(stock, '\n') == NULL)
-		return (ft_strlen_gnl(stock));
+		return (ft_strlen(stock));
 	while (stock[i] != '\n' && stock[i] != '\0')
 		i++;
 	return (i + 1);
@@ -69,7 +69,7 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	char		*line;
 
 	line = NULL;
-	if (ft_strlen_gnl(stock) == 0)
+	if (ft_strlen(stock) == 0)
 	{
 		free(stock);
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 00:44:07 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 03:54:06 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:19:23 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,11 @@ int flood_fill(t_fill_info *info, Position pos, int rows, int cols)
 	return 1;
 }
 
-void count_components(t_map *map_data, Position *player_start, int *exits, int *players)
+void count_components(t_map *map_data, Position *player_start,
+int *exits, int *players)
 {
-	int i, j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map_data->rows)

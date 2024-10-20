@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 03:14:13 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:30:15 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int check_valid_path(t_map *map_data, Position player_start)
 
 	free_map_copy(map_copy, map_data->rows);
 
-	if (fill_info.collected != map_data->collectables || fill_info.found_exit != 1)
+	if (fill_info.collected != map_data->collectables
+			|| fill_info.found_exit != 1)
 	{
 		ft_putstr_fd("Error\nNo valid path.\n",1);
 		return 0;
@@ -89,20 +90,21 @@ int is_surrounded_by_walls(t_map *map_data)
 	int i;
 	int j;
 
-	i = 0;
-	while (i < map_data->cols)
+	i = -1;
+	while (++i < map_data->cols)
 	{
-		if (map_data->map[0][i] != '1' || map_data->map[map_data->rows - 1][i] != '1')
+		if (map_data->map[0][i] != '1'
+			|| map_data->map[map_data->rows - 1][i] != '1')
 		{
 			ft_putstr_fd("Error\nMap must be surrounded by walls.\n",1);
 			return 0;
 		}
-		i++;
 	}
 	j = 0;
 	while (j < map_data->rows)
 	{
-		if (map_data->map[j][0] != '1' || map_data->map[j][map_data->cols - 1] != '1')
+		if (map_data->map[j][0] != '1'
+		|| map_data->map[j][map_data->cols - 1] != '1')
 		{
 			ft_putstr_fd("Error\nMap must be surrounded by walls.\n",1);
 			return 0;

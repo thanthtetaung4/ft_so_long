@@ -6,13 +6,13 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:01:46 by msanjuan          #+#    #+#             */
-/*   Updated: 2024/10/20 01:53:14 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:24:24 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./get_next_line.h"
 
-size_t	ft_strlen_gnl(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ char	*f_strdup_gnl(char *s1)
 	int		i;
 
 	i = 0;
-	copy = (char *)malloc((ft_strlen_gnl(s1) + 1) * sizeof(char));
+	copy = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!copy)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -62,7 +62,7 @@ char	*f_strjoin_gnl(char *s1, char *s2)
 	i = 0;
 	if (s1 == NULL)
 		return (f_strdup_gnl(s2));
-	res = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
 	while (s1[i])

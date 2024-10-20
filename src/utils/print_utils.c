@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:53:11 by taung             #+#    #+#             */
-/*   Updated: 2024/10/19 05:10:14 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/20 03:20:30 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	ft_print_map(t_map *map_data)
 	int	i;
 
 	i = 0;
-	while(i < map_data->rows)
+	while (i < map_data->rows)
 	{
-		ft_putstr_fd(map_data->map[i],1);
-		ft_putchar_fd('\n',1);
+		ft_putstr_fd(map_data->map[i], 1);
+		ft_putchar_fd('\n', 1);
 		i++;
 	}
 }
