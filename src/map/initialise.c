@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 19:43:25 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/21 19:25:39 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_map	*init_map(const char *path)
 	else
 	{
 		free_map(map);
+		free(map);
 		return (NULL);
 	}
 }

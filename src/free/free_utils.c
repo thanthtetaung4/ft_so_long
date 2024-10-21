@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 23:30:15 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 19:08:25 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/21 19:25:32 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	free_map(t_map *map)
 		free(map->map);
 		map->map = NULL;
 	}
-	free(map);
 }
 
 void	free_mlx(t_data *data)
