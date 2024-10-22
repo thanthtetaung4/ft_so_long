@@ -6,11 +6,19 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:54:10 by taung             #+#    #+#             */
-/*   Updated: 2024/10/21 19:25:39 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:01:07 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
+
+t_map	*parse_map_err(char *str, t_map *map)
+{
+	free(str);
+	free_map(map);
+	free(map);
+	return (NULL);
+}
 
 t_map	*parse_map(const char *path)
 {
@@ -25,7 +33,7 @@ t_map	*parse_map(const char *path)
 	fd = open(path, O_RDONLY);
 	res = get_next_line(fd);
 	if (!res)
-		return (NULL);
+		return (parse_map_err(res, map));
 	map->cols = ft_strlen(res) - 1;
 	while (res)
 	{
@@ -67,6 +75,12 @@ t_map	*init_map(const char *path)
 		return (NULL);
 	}
 	map = parse_map(path);
+	if (map == NULL)
+	{
+		ft_putstr_fd("Error Empty map || row < 3\n", 1);
+		free(map);
+		return (NULL);
+	}
 	if (validate_map(map))
 		return (map);
 	else

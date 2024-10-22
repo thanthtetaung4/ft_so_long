@@ -59,7 +59,6 @@ $(TEST): $(TETST_OBJS) $(MLX_LIB) $(LIBFT)
 clean:
 	rm -f $(OBJS)
 	@$(MAKE) -C $(LIBFT_PATH) clean
-# @$(MAKE) -C $(PRINTF_PATH) clean
 	@echo "\033[33m[Cleaned up]\033[0m"
 
 # Clean object files and executable
