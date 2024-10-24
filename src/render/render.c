@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:33:48 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 19:26:11 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/25 05:56:44 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	render_img(t_data *data)
 
 void	mlx_render(t_data *data)
 {
-	mlx_loop_hook(data->mlx, &render_img, data);
+	// mlx_loop_hook(data->mlx, &render_img, data);
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, &handle_keypress, data);
 	mlx_hook(data->mlx_win, DestroyNotify,
 		StructureNotifyMask, &close_win, data);

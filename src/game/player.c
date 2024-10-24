@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:34:22 by taung             #+#    #+#             */
-/*   Updated: 2024/10/21 20:37:38 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/25 05:57:47 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	move_player(t_data *data, int x, int y)
 			update_map(data, data->player.p_x - x, data->player.p_y - y, '0');
 			update_map(data, data->player.p_x, data->player.p_y, 'P');
 		}
+		render_img(data);
 	}
 }
