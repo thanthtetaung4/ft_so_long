@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:34:22 by taung             #+#    #+#             */
-/*   Updated: 2024/10/21 20:37:38 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/25 17:10:27 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,30 @@ void	move_player(t_data *data, int x, int y)
 			if (data->map.collectables == data->player.points)
 				win(data);
 		}
-		else
-		{
-			update_map(data, data->player.p_x - x, data->player.p_y - y, '0');
-			update_map(data, data->player.p_x, data->player.p_y, 'P');
-		}
 	}
 }
+
+t_Position	find_player_pos(t_data *data)
+{
+	int			i;
+	int			j;
+	t_Position	pos;
+
+	i = 0;
+	while (i < data->map.rows)
+	{
+		j = 0;
+		while (j < data->map.cols)
+		{
+			if (data->map.map[i][j] == 'P')
+			{
+				pos.x = j;
+				pos.y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (pos);
+}
+// cols == x & rows == y
