@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:43:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/22 18:33:04 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/26 18:12:54 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_map_row_cp(char **dest, char *src)
 
 int	path_check(const char *path)
 {
+	int	fd;
+
 	if (ft_strlen(path) > 5)
 	{
 		if (*(ft_strrchr(path, '.')) == path[ft_strlen(path) - 4]
@@ -68,10 +70,20 @@ int	path_check(const char *path)
 			&& *(ft_strrchr(path, 'e')) == path[ft_strlen(path) - 2]
 			&& *(ft_strrchr(path, 'r')) == path[ft_strlen(path) - 1])
 		{
-			if (open(path, O_RDONLY) > -1)
+			fd = open(path, O_RDONLY);
+			if (fd > -1)
+			{
+				close(fd);
 				return (1);
+			}
+			else if (errno == 13)
+				ft_putstr_fd("Error\nNo Permission :(\n", 2);
+			else
+				ft_putstr_fd("Error\nPath KO :(\n", 2);
+			close(fd);
 		}
+		else
+			ft_putstr_fd("Error\nExtension KO:(\n", 2);
 	}
-	ft_putstr_fd("Error\nPath KO :(\n", 2);
 	return (0);
 }

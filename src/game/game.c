@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:34:30 by taung             #+#    #+#             */
-/*   Updated: 2024/10/25 15:46:43 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 14:28:58 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	win(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	data->mlx_win = NULL;
-	ft_putstr_fd("YOU WIN!!\n", 1);
+	ft_putstr_fd("\033[32mYOU WIN!!\033[0m\n", 1);
 }

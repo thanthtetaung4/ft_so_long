@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:33:48 by taung             #+#    #+#             */
-/*   Updated: 2024/10/25 19:22:17 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 15:57:34 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	render_img(t_data *data)
 			j = 0;
 			while (j < data->map.cols)
 			{
-				parse_chars(data, i, j);
+				render_grass(data, i, j);
 				render_player(data);
 				j++;
 			}

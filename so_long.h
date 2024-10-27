@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:21:35 by taung             #+#    #+#             */
-/*   Updated: 2024/10/25 19:21:41 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 14:36:06 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/X.h>
 # include "./libft/libft.h"
 # include "./src/get_next_line/get_next_line.h"
+# include <errno.h>
 
 typedef struct s_map
 {
@@ -124,6 +125,7 @@ int			initail_render_img(t_data *data);
 void		init_mlx(t_data *data, t_map *map);
 void		calc_win_dimensions(t_map *map, t_data *data);
 void		parse_chars(t_data *data, int i, int j);
+void		render_grass(t_data *data, int i, int j);
 void		render_player(t_data *data);
 
 //player

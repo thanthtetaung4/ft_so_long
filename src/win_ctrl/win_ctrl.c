@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:46:33 by taung             #+#    #+#             */
-/*   Updated: 2024/10/25 05:47:45 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 15:58:41 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	close_win(t_data *data)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		data->mlx_win = NULL;
-		ft_putstr_fd("U QIOT GAME OVER!\n", 1);
+		ft_putstr_fd("U QUIT GAME OVER!\n", 1);
+		free_all(data);
+		exit(0);
 	}
 	return (0);
 }
