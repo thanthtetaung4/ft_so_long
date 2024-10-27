@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/28 01:45:34 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/28 02:15:02 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_valid_path(t_map *map_data, t_Position player_start)
 	fill_info.found_exit = 0;
 	flood_fill(&fill_info, player_start, map_data->rows, map_data->cols);
 	if (fill_info.collected != map_data->collectables
-		&& exit_ok(fill_info.map, map_data->rows, map_data->cols ))
+		|| !exit_ok(fill_info.map, map_data->rows, map_data->cols))
 	{
 		free_map_copy(map_copy, map_data->rows);
 		ft_putstr_fd("Error\nNo valid path.\n", 1);
