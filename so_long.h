@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:21:35 by taung             #+#    #+#             */
-/*   Updated: 2024/10/27 14:36:06 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 17:15:12 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_fill_info{
 	char	**map;
 	int		collected;
 	int		found_exit;
+	int		total_collectable;
 }	t_fill_info;
 
 # define WALL '1'

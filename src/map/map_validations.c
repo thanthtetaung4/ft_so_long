@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:55:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/20 19:42:41 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/27 17:15:21 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	check_valid_path(t_map *map_data, t_Position player_start)
 	t_fill_info	fill_info;
 	char		**map_copy;
 
+	fill_info.total_collectable = map_data->collectables;
 	map_copy = copy_map(map_data);
 	if (!map_copy)
 	{
