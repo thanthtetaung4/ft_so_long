@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 00:44:07 by taung             #+#    #+#             */
-/*   Updated: 2024/10/27 17:18:13 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/28 01:29:02 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ int	flood_fill(t_fill_info *info, t_Position pos, int rows, int cols)
 		return (0);
 	if (info->map[pos.x][pos.y] == 'C')
 		info->collected++;
-	if (info->map[pos.x][pos.y] == 'E'
-		&& info->collected == info->total_collectable)
-		info->found_exit++;
+	if (info->map[pos.x][pos.y] == 'E')
+		return (0);
 	info->map[pos.x][pos.y] = 'F';
 	directions[0].x = pos.x + 1;
 	directions[0].y = pos.y;

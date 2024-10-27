@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:21:35 by taung             #+#    #+#             */
-/*   Updated: 2024/10/27 17:15:12 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/28 01:42:14 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ t_Position	find_player_start(t_map *map_data);
 int			flood_fill(t_fill_info *info, t_Position pos, int rows, int cols);
 void		count_components(t_map *map_data, t_Position *player_start,
 				int *exits, int *players);
+int	exit_ok(char **map, int rows, int cols);
+
 
 //map validations
 int			check_valid_path(t_map *map_data, t_Position player_start);
