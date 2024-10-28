@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 01:43:20 by taung             #+#    #+#             */
-/*   Updated: 2024/10/28 02:08:08 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/29 03:10:31 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_map_row_cp(char **dest, char *src)
 		return ;
 	ft_strlcpy(*dest, (const char *)src, ft_strlen(src));
 }
+
 int	path_check_helper(const char *path)
 {
 	int	fd;
@@ -80,6 +81,7 @@ int	path_check_helper(const char *path)
 		return (0);
 	}
 }
+
 int	path_check(const char *path)
 {
 	if (ft_strlen(path) > 5)

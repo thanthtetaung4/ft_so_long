@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 01:31:02 by taung             #+#    #+#             */
-/*   Updated: 2024/10/28 01:46:13 by taung            ###   ########.fr       */
+/*   Updated: 2024/10/29 03:09:56 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_Position	get_exit_pos(char **map, int rows, int cols)
 	pos.x = 0;
 	pos.y = 0;
 	i = 0;
-	while(i < rows)
+	while (i < rows)
 	{
 		j = 0;
-		while(j < cols)
+		while (j < cols)
 		{
-			if(map[i][j] == 'E')
+			if (map[i][j] == 'E')
 			{
 				pos.x = j;
 				pos.y = i;
@@ -44,7 +44,7 @@ int	exit_ok(char **map, int rows, int cols)
 	t_Position	exit_pos;
 
 	exit_pos = get_exit_pos(map, rows, cols);
-	if(map[exit_pos.y][exit_pos.x - 1] == 'F'
+	if (map[exit_pos.y][exit_pos.x - 1] == 'F'
 		|| map[exit_pos.y][exit_pos.x + 1] == 'F'
 		|| map[exit_pos.y - 1][exit_pos.x] == 'F'
 		|| map[exit_pos.y + 1][exit_pos.x] == 'F')
