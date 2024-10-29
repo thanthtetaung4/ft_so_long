@@ -35,7 +35,7 @@ all: $(NAME)
 	 @echo "\033[32m[so_long is ready for use]\033[0m"
 
 $(NAME): $(OBJS) $(MLX_LIB) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) $(LIBFT) $(MLX_LIB) -o $(NAME)
 
 # Compile the MiniLibX library
 $(MLX_LIB):
